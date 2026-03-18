@@ -1,0 +1,7 @@
+br\com\fiap\techchallenge\pedido\repository\PedidoRepositoryIntegrationTest.class
+br\com\fiap\techchallenge\pedido\service\CriarPedidoServiceTest$1.class
+br\com\fiap\techchallenge\pedido\integration\PedidoIntegrationTest.class
+br\com\fiap\techchallenge\pedido\controller\PedidoControllerTest.class
+br\com\fiap\techchallenge\pedido\kafka\PedidoKafkaIntegrationTest.class
+br\com\fiap\techchallenge\pedido\security\TestSecurityConfig.class
+br\com\fiap\techchallenge\pedido\service\CriarPedidoServiceTest.class

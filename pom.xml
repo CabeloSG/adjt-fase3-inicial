@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.fiap.techchallenge</groupId>
+    <artifactId>adjt-fase3-inicial</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>adjt-fase3-inicial</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>auth.service</module>
+        <module>pedido-service</module>
+        <module>pagamento-service</module>
+    </modules>
+
+</project>

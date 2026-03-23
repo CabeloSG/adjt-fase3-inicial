@@ -12,6 +12,7 @@ Para ver os endpoints disponiveis, acesse `localhost:8089/openapi.yml`
 
 Filipe Gonçalves Ferreira - RM367737  
 Leandro da Silva Gonçalves - RM367789  
+Lucas Santos Escolástico do Nascimento - Rm367273
 
 ---
 

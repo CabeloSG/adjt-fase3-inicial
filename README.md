@@ -322,7 +322,7 @@ Use isso para garantir que **não esqueceu nada**.
 
 ---
 
-# 🚀 Resultado
+### Resultado
 
 O projeto agora está **100% alinhado com os requisitos da Fase 03**.
 

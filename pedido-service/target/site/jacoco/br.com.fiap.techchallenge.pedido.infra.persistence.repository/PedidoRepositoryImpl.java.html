@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PedidoRepositoryImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pedido-service</a> &gt; <a href="index.source.html" class="el_package">br.com.fiap.techchallenge.pedido.infra.persistence.repository</a> &gt; <span class="el_source">PedidoRepositoryImpl.java</span></div><h1>PedidoRepositoryImpl.java</h1><pre class="source lang-java linenums">package br.com.fiap.techchallenge.pedido.infra.persistence.repository;
+
+
+import br.com.fiap.techchallenge.pedido.domain.model.Pedido;
+import br.com.fiap.techchallenge.pedido.domain.repository.PedidoRepository;
+import br.com.fiap.techchallenge.pedido.infra.persistence.entity.PedidoJpaEntity;
+import br.com.fiap.techchallenge.pedido.infra.persistence.mapper.PedidoMapper;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public class PedidoRepositoryImpl implements PedidoRepository {
+
+    private final PedidoJpaRepository jpaRepository;
+
+<span class="fc" id="L19">    public PedidoRepositoryImpl(PedidoJpaRepository jpaRepository) {</span>
+
+<span class="fc" id="L21">        this.jpaRepository = jpaRepository;</span>
+<span class="fc" id="L22">    }</span>
+
+    @Override
+    public Pedido salvar(Pedido pedido) {
+
+<span class="fc" id="L27">        PedidoJpaEntity entity = new PedidoJpaEntity();</span>
+
+<span class="fc" id="L29">        entity.setUserId(pedido.getUserId());</span>
+<span class="fc" id="L30">        entity.setRestauranteId(pedido.getRestauranteId());</span>
+<span class="fc" id="L31">        entity.setDescricao(pedido.getDescricao());</span>
+<span class="fc" id="L32">        entity.setValorTotal(pedido.getValorTotal());</span>
+
+        // evita erro de null no banco
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if (pedido.getCriadoEm() == null) {</span>
+<span class="nc" id="L36">            entity.setCriadoEm(java.time.LocalDateTime.now());</span>
+        } else {
+<span class="fc" id="L38">            entity.setCriadoEm(pedido.getCriadoEm());</span>
+        }
+
+<span class="fc" id="L41">        entity.setStatus(pedido.getStatus());</span>
+
+<span class="fc" id="L43">        entity = jpaRepository.save(entity);</span>
+
+<span class="fc" id="L45">        return new Pedido(</span>
+<span class="fc" id="L46">                entity.getId(),</span>
+<span class="fc" id="L47">                entity.getUserId(),</span>
+<span class="fc" id="L48">                entity.getRestauranteId(),</span>
+<span class="fc" id="L49">                entity.getDescricao(),</span>
+<span class="fc" id="L50">                entity.getValorTotal(),</span>
+<span class="fc" id="L51">                entity.getCriadoEm(),</span>
+<span class="fc" id="L52">                entity.getStatus()</span>
+        );
+    }
+
+    @Override
+    @Transactional
+    public void atualizarStatus(Long pedidoId, String status) {
+
+<span class="nc" id="L60">        PedidoJpaEntity entity =</span>
+<span class="nc" id="L61">                jpaRepository.findById(pedidoId)</span>
+<span class="nc" id="L62">                        .orElseThrow();</span>
+
+<span class="nc" id="L64">        entity.setStatus(status);</span>
+
+<span class="nc" id="L66">        jpaRepository.save(entity);</span>
+<span class="nc" id="L67">    }</span>
+
+    @Override
+    public List&lt;Pedido&gt; findByUserId(Long clienteId) {
+
+<span class="nc" id="L72">        return jpaRepository</span>
+<span class="nc" id="L73">                .findByUserId(clienteId)</span>
+<span class="nc" id="L74">                .stream()</span>
+<span class="nc" id="L75">                .map(PedidoMapper::toDomain)</span>
+<span class="nc" id="L76">                .toList();</span>
+    }
+
+    @Override
+    public Optional&lt;Pedido&gt; findById(Long id) {
+<span class="nc" id="L81">        return jpaRepository.findById(id)</span>
+<span class="nc" id="L82">                .map(PedidoMapper::toDomain);</span>
+    }
+
+    @Override
+    public Optional&lt;Pedido&gt; buscarPorId(Long id) {
+<span class="nc" id="L87">        return jpaRepository.findById(id)</span>
+<span class="nc" id="L88">                .map(PedidoMapper::toDomain);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

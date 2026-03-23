@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PedidoJpaEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pedido-service</a> &gt; <a href="index.source.html" class="el_package">br.com.fiap.techchallenge.pedido.infra.persistence.entity</a> &gt; <span class="el_source">PedidoJpaEntity.java</span></div><h1>PedidoJpaEntity.java</h1><pre class="source lang-java linenums">package br.com.fiap.techchallenge.pedido.infra.persistence.entity;
+
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = &quot;pedidos&quot;)
+public class PedidoJpaEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private Long userId;
+
+    @Column(nullable = false)
+    private String descricao;
+
+    @Column(nullable = false)
+    private BigDecimal valorTotal;
+
+    @Column(nullable = false)
+    private LocalDateTime criadoEm;
+
+    @Column(name = &quot;status&quot;)
+    private String status;
+
+    @Column(nullable = false)
+    private Long restauranteId;
+
+<span class="fc" id="L33">    public PedidoJpaEntity() {</span>
+<span class="fc" id="L34">    }</span>
+
+    // Construtor usado ao salvar
+    public PedidoJpaEntity(Long userId,
+                           String descricao,
+                           BigDecimal valorTotal,
+                           LocalDateTime criadoEm,
+                           String status,
+<span class="nc" id="L42">                           Long restauranteId) {</span>
+<span class="nc" id="L43">        this.userId = userId;</span>
+<span class="nc" id="L44">        this.descricao = descricao;</span>
+<span class="nc" id="L45">        this.valorTotal = valorTotal;</span>
+<span class="nc" id="L46">        this.criadoEm = criadoEm;</span>
+<span class="nc" id="L47">        this.status = status;</span>
+<span class="nc" id="L48">        this.restauranteId = restauranteId;</span>
+<span class="nc" id="L49">    }</span>
+
+    // Construtor completo (opcional, mas profissional)
+    public PedidoJpaEntity(Long id,
+                           Long userId,
+                           String descricao,
+                           BigDecimal valorTotal,
+                           LocalDateTime criadoEm,
+                           String status,
+<span class="nc" id="L58">                           Long restauranteId) {</span>
+<span class="nc" id="L59">        this.id = id;</span>
+<span class="nc" id="L60">        this.userId = userId;</span>
+<span class="nc" id="L61">        this.descricao = descricao;</span>
+<span class="nc" id="L62">        this.valorTotal = valorTotal;</span>
+<span class="nc" id="L63">        this.criadoEm = criadoEm;</span>
+<span class="nc" id="L64">        this.status = status;</span>
+<span class="nc" id="L65">        this.restauranteId = restauranteId;</span>
+<span class="nc" id="L66">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L69">        return id;</span>
+    }
+
+    public Long getUserId() {
+<span class="fc" id="L73">        return userId;</span>
+    }
+
+    public String getDescricao() {
+<span class="fc" id="L77">        return descricao;</span>
+    }
+
+    public BigDecimal getValorTotal() {
+<span class="fc" id="L81">        return valorTotal;</span>
+    }
+
+    public LocalDateTime getCriadoEm() {
+<span class="fc" id="L85">        return criadoEm;</span>
+    }
+
+    public String getStatus() {
+<span class="fc" id="L89">        return status;</span>
+    }
+
+    public void setStatus(String status) {
+<span class="fc" id="L93">        this.status = status;</span>
+<span class="fc" id="L94">    }</span>
+
+
+
+    public void setId(Long id) {
+<span class="nc" id="L99">        this.id = id;</span>
+<span class="nc" id="L100">    }</span>
+
+    public void setUserId(Long userId) {
+<span class="fc" id="L103">        this.userId = userId;</span>
+<span class="fc" id="L104">    }</span>
+
+    public void setDescricao(String descricao) {
+<span class="fc" id="L107">        this.descricao = descricao;</span>
+<span class="fc" id="L108">    }</span>
+
+    public void setValorTotal(BigDecimal valorTotal) {
+<span class="fc" id="L111">        this.valorTotal = valorTotal;</span>
+<span class="fc" id="L112">    }</span>
+
+    public void setCriadoEm(LocalDateTime criadoEm) {
+<span class="fc" id="L115">        this.criadoEm = criadoEm;</span>
+<span class="fc" id="L116">    }</span>
+
+    public Long getRestauranteId() {
+<span class="fc" id="L119">        return restauranteId;</span>
+    }
+
+    public void setRestauranteId(Long restauranteId) {
+<span class="fc" id="L123">        this.restauranteId = restauranteId;</span>
+<span class="fc" id="L124">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

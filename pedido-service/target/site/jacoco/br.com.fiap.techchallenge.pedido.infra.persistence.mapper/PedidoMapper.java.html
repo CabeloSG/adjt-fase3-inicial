@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PedidoMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pedido-service</a> &gt; <a href="index.source.html" class="el_package">br.com.fiap.techchallenge.pedido.infra.persistence.mapper</a> &gt; <span class="el_source">PedidoMapper.java</span></div><h1>PedidoMapper.java</h1><pre class="source lang-java linenums">package br.com.fiap.techchallenge.pedido.infra.persistence.mapper;
+
+import br.com.fiap.techchallenge.pedido.domain.model.Pedido;
+import br.com.fiap.techchallenge.pedido.infra.persistence.entity.PedidoJpaEntity;
+
+<span class="nc" id="L6">public class PedidoMapper {</span>
+
+    public static PedidoJpaEntity toEntity(Pedido pedido) {
+<span class="nc" id="L9">        return new PedidoJpaEntity(</span>
+<span class="nc" id="L10">                pedido.getUserId(),</span>
+<span class="nc" id="L11">                pedido.getDescricao(),</span>
+<span class="nc" id="L12">                pedido.getValorTotal(),</span>
+<span class="nc" id="L13">                pedido.getCriadoEm(),</span>
+<span class="nc" id="L14">                pedido.getStatus(),</span>
+<span class="nc" id="L15">                pedido.getRestauranteId()</span>
+        );
+    }
+
+    public static Pedido toDomain(PedidoJpaEntity entity) {
+
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if(entity == null) {</span>
+<span class="nc" id="L22">            return null;</span>
+        }
+
+<span class="nc" id="L25">        return new Pedido(</span>
+<span class="nc" id="L26">                entity.getId(),</span>
+<span class="nc" id="L27">                entity.getUserId(),</span>
+<span class="nc" id="L28">                entity.getRestauranteId(),</span>
+<span class="nc" id="L29">                entity.getDescricao(),</span>
+<span class="nc" id="L30">                entity.getValorTotal(),</span>
+<span class="nc" id="L31">                entity.getCriadoEm(),</span>
+<span class="nc" id="L32">                entity.getStatus()</span>
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
